@@ -15,3 +15,19 @@ def create_session(race, session='Race', year='latest', cache_dir='cache'):
     session.load()
     return session
 
+
+class Driver:
+    def __init__(self, abbr, session):
+        self.abbr = abbr
+        self.name = self.convert_name()
+        self.color = self.get_color()
+        self.laps = self.get_driver_laps(session)
+
+    def convert_name(self):  # TODO: Maybe extract this method from class
+        return ff1.plotting.DRIVER_TRANSLATE.get(self.abbr).title()
+
+    def get_color(self):  # TODO: Maybe extract this method from class
+        return ff1.plotting.driver_color(self.abbr)
+
+    def get_driver_laps(self, session):  # TODO: Maybe extract this method from class
+        return session.laps.pick_driver(self.abbr)
