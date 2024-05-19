@@ -1,4 +1,4 @@
-__all__ = ['core']
+__all__ = ['plotting', 'core']
 
 from . import plotting
 from . import core
