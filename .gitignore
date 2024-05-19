@@ -8,3 +8,7 @@
 /dataSources.local.xml
 # .idea workspace files
 /.idea/
+# Test cache
+/gridf1/tests/cache/
+# .pyc files
+*.pyc
