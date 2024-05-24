@@ -1,8 +1,9 @@
 from matplotlib import pyplot as plt
 
 
-def create_time_series_plot(lap_times, x_label, y_label, title, virtual_safety_car_laps, safety_car_laps,
-                            session_title=False, legend=False):
+
+def create_time_series_plot(lap_times: dict, x_label: str, y_label: str, title: str, virtual_safety_car_laps: list,
+                            safety_car_laps: list, session_title=False, legend=False) -> None:
     fig, ax = plt.subplots()
     for driver, data in lap_times.items():
         ax.plot(data[0], data[1], label=driver, marker='.', color=data[2])
@@ -20,7 +21,6 @@ def create_time_series_plot(lap_times, x_label, y_label, title, virtual_safety_c
         ax.axvline(x=safety_car_laps[0], color='#ff6a00', alpha=0.2, linewidth=6, label='Safety Car')  # Handle first lap separately with label
         for lap in safety_car_laps[1:]:  # Skip first lap as it is already plotted
             ax.axvline(x=lap, color='#ff6a00', alpha=0.2, linewidth=6)
-
 
     if legend:
         ax.legend()
