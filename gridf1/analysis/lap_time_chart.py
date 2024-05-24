@@ -1,5 +1,6 @@
 import fastf1.core
 
+import gridf1.core
 import gridf1.plotting.time_series_plot
 
 
