@@ -18,7 +18,7 @@ def create_session(race, session='Race', year='latest', cache_dir='cache'):
 
 class Driver:
     def __init__(self, abbr, session):
-        self.abbr = abbr
+        self.abbr = abbr.upper()
         self.name = self.convert_name()
         self.color = self.get_color()
         self.laps = self.get_driver_laps(session)
