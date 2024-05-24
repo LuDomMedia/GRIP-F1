@@ -4,8 +4,7 @@ import gridf1.core
 import gridf1.plotting.time_series_plot
 
 
-def create_lap_time_chart(session: fastf1.core.Session, driver: gridf1.core.Driver,
-                          *additional_drivers: gridf1.core.Driver) -> None:
+def create_lap_time_chart(session: fastf1.core.Session, driver: gridf1.core.Driver, *additional_drivers: gridf1.core.Driver) -> None:
     lap_times = {driver.name: [driver.laps['LapNumber'], driver.laps['LapTime'],
                                driver.color]}  # Create dictionary with x-, y-data and driver color
     if additional_drivers:  # Check if additional drivers are provided
