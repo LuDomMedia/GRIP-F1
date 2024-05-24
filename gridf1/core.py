@@ -4,7 +4,7 @@ import fastf1.core
 import fastf1.plotting
 
 
-def create_session(race, session='Race', year='latest', cache_dir='cache'):
+def create_session(race: str, session='Race', year='latest', cache_dir='cache') -> fastf1.core.Session:
     # Enable the cache
     ff1.Cache.enable_cache(cache_dir)
     # Enable plotting settings
