@@ -25,12 +25,12 @@ for index, lap in ham.laps.iterrows():
 
 #print(ham.laps.pick_fastest().get_telemetry().head(3))
 
-Ham_SC = gridf1.analysis.speed_chart.SpeedChart(session, ham, 0, legend=True)
-#Ham_SC.add_driver(nor, 1)
+#Ham_SC = gridf1.analysis.speed_chart.SpeedChart(session, ham, 0, legend=True)
+#Ham_SC.add_lap(nor, 1)
 #Ham_SC.set_title("Speed Analysis", session)
-Ham_SC.plot()
+#Ham_SC.plot()
 
-#Ham_LTC = gridf1.analysis.lap_time_chart.LapTimeChart(session, ham, legend=True, mark_sc=True, mark_vsc=True, mark_yellow_flag=True)
-#Ham_LTC.add_driver(nor)
-#Ham_LTC.set_title("Lap Time Progression", session)
-#Ham_LTC.plot()
+Ham_LTC = gridf1.analysis.lap_time_chart.LapTimeChart(session, ham, legend=True, mark_sc=True, mark_vsc=True, mark_yellow_flag=True)
+Ham_LTC.add_driver(nor)
+Ham_LTC.set_title("Lap Time Progression", session)
+Ham_LTC.plot()
