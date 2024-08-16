@@ -1,4 +1,6 @@
 import fastf1.core
+import pandas
+import numpy as np
 from matplotlib import pyplot as plt
 
 
@@ -106,8 +108,16 @@ class TimeSeriesPlot:
     def set_axis_labels(self, x_label: str, y_label: str):
         self.ax.set(xlabel=x_label, ylabel=y_label)
 
-    def create_plot_line(self, x_data: tuple, y_data: tuple, label: str, color: str, marker: str = '.'):
-        self.ax.plot(x_data, y_data, label=label, color=color, marker=marker, zorder=1)
+    def create_plot_line(self, x_data: tuple, y_data: tuple, label: str, color: str, exclude_data: list = None,
+                         marker: str = '.'):
+        if exclude_data is None:
+            exclude_data = []
+
+        data_dict = {"x_data": x_data, "y_data": y_data}
+        data_df = pandas.DataFrame(data_dict)
+        data_df.loc[data_df['x_data'].isin(exclude_data), 'y_data'] = np.nan
+
+        self.ax.plot(data_df['x_data'], data_df['y_data'], label=label, color=color, marker=marker, zorder=1)
 
     def mark_x_axis(self, lap: int, color: str, label: str, alpha: float = 0.3, linewidth: int = 6):
         if label == "":
