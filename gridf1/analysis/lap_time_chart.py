@@ -1,4 +1,5 @@
 import fastf1.core
+import numpy as np
 
 import gridf1.core
 import gridf1.plotting.time_series_plot
@@ -34,17 +35,20 @@ def create_lap_time_chart(session: fastf1.core.Session, driver: gridf1.core.Driv
 
 
 class LapTimeChart(TimeSeriesPlot):
-    def __init__(self, title_session: fastf1.core.Session, driver: gridf1.core.Driver,
+    def __init__(self, title_session: fastf1.core.Session, driver: gridf1.core.Driver, excluded_laps: list = None,
                  legend: bool = False, mark_sc: bool = False, mark_vsc: bool = False, mark_yellow_flag: bool = False):
         x_label = "Lap Number"
         y_label = "Lap Time"
         title = driver.name + " Lap Time Progression"
         super().__init__(x_label, y_label, title, title_session, legend)
         self.mark_laps(driver, mark_sc, mark_vsc, mark_yellow_flag)
-        self.add_driver(driver)
+        self.add_driver(driver, excluded_laps)
 
-    def add_driver(self, driver: gridf1.core.Driver):
-        self.create_plot_line(driver.laps['LapNumber'], driver.laps['LapTime'], driver.name, driver.color)
+    def add_driver(self, driver: gridf1.core.Driver, excluded_laps: list = None):
+        if excluded_laps is None:
+            excluded_laps = []
+
+        self.create_plot_line(driver.laps['LapNumber'], driver.laps['LapTime'], driver.name, driver.color, excluded_laps)
 
     def mark_laps(self, driver: gridf1.core.Driver, mark_sc: bool = False, mark_vsc: bool = False, mark_yellow_flag: bool = False):
         if mark_sc:
