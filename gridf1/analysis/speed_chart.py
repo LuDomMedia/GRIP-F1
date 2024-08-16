@@ -19,10 +19,9 @@ class SpeedChart(TimeSeriesPlot):
     def add_driver(self, driver: gridf1.core.Driver, lap_number: int = 0):  # Default behavior is to plot the fastest
         if lap_number == 0:
             lap = driver.laps.pick_fastest()
-            self.create_plot_line(lap.get_telemetry()['Time'], lap.get_telemetry()['Speed'], driver.name, driver.color,
-                                  marker=None)
+            self.create_plot_line(lap.get_telemetry()['Time'], lap.get_telemetry()['Speed'], driver.name, driver.color)
         else:
             for index, lap in driver.laps.iterrows():
                 if lap['LapNumber'] == lap_number:
-                    self.create_plot_line(lap.get_telemetry()['Time'], lap.get_telemetry()['Speed'], driver.name, driver.color, marker=None)
+                    self.create_plot_line(lap.get_telemetry()['Time'], lap.get_telemetry()['Speed'], driver.name, driver.color)
                     break
