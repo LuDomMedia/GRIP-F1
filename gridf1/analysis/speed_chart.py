@@ -14,9 +14,9 @@ class SpeedChart(TimeSeriesPlot):
         if lap_number == 0:
             title = driver.name + " Speed Analysis | Fastest Lap"
         super().__init__(x_label, y_label, title, title_session, legend)
-        self.add_driver(driver, lap_number)
+        self.add_lap(driver, lap_number)
 
-    def add_driver(self, driver: gridf1.core.Driver, lap_number: int = 0):  # Default behavior is to plot the fastest
+    def add_lap(self, driver: gridf1.core.Driver, lap_number: int = 0):  # Default behavior is to plot the fastest
         if lap_number == 0:
             lap = driver.laps.pick_fastest()
             self.create_plot_line(lap.get_telemetry()['Time'], lap.get_telemetry()['Speed'], driver.name, driver.color)
