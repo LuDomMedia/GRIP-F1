@@ -14,16 +14,7 @@ gas = gridf1.driver.Driver("GAS", session)
 rus = gridf1.driver.Driver("RUS", session)
 
 '''
-#gridf1.analysis.lap_time_chart.create_lap_time_chart(session, ham, nor)
-#pd.set_option('display.max_rows', 500)
-#pd.set_option('display.max_columns', 500)
-'''
-for index, lap in ham.laps.iterrows():
-    print(lap.get_telemetry().head(3))
-    break
-'''
 
-#print(ham.laps.pick_fastest().get_telemetry().head(3))
 
 #Ham_SC = gridf1.analysis.speed_chart.SpeedChart(session, ham, 0, legend=True)
 #Ham_SC.add_lap(nor, 1)

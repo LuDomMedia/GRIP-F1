@@ -1,42 +1,44 @@
 import fastf1.core
-import numpy as np
 
-import gridf1.core
 import gridf1.plotting.time_series_plot
 from gridf1.plotting.time_series_plot import TimeSeriesPlot
 
 
-# DEPRECATED
-'''
-def create_lap_time_chart(session: fastf1.core.Session, driver: gridf1.core.Driver, *additional_drivers: gridf1.core.Driver) -> None:
-    lap_times = {driver.name: [driver.laps['LapNumber'], driver.laps['LapTime'],
-                               driver.color]}  # Create dictionary with x-, y-data and driver color
-    if additional_drivers:  # Check if additional drivers are provided
-        title = "Lap Time Progression"
-        for driver in additional_drivers:  # Add additional drivers to dictionary
-            lap_times[driver.name] = [driver.laps['LapNumber'], driver.laps['LapTime'], driver.color]
-    else:
-        title = driver.name + " Lap Time Progression"
-
-    virtual_safety_car_laps = []
-    for index, lap in driver.laps.iterrows():
-        if lap['TrackStatus'].find('6') != -1 or lap['TrackStatus'].find('7') != -1:
-            virtual_safety_car_laps.append(lap['LapNumber'])
-
-    safety_car_laps = []
-    for index, lap in driver.laps.iterrows():
-        if lap['TrackStatus'].find('4') != -1:
-            safety_car_laps.append(lap['LapNumber'])
-
-    gridf1.plotting.time_series_plot.create_time_series_plot(lap_times, "Lap Number", "Lap Time", title,
-                                                             virtual_safety_car_laps, safety_car_laps,
-                                                             session, True)
-'''
-
-
 class LapTimeChart(TimeSeriesPlot):
-    def __init__(self, title_session: fastf1.core.Session, driver: gridf1.core.Driver, excluded_laps: list = None,
-                 legend: bool = False, mark_sc: bool = False, mark_vsc: bool = False, mark_yellow_flag: bool = False):
+    """
+        A class used to create a chart of the lap time progression of one or more drivers
+        Inherits from TimeSeriesPlot.
+
+        ...
+
+        Attributes
+        ----------
+        title_session
+            Session object for automatic generation of the second title line (default: None)
+        driver
+            Driver object to get the data from
+        excluded_laps
+            List of laps to exclude from the chart (default: None)
+        legend
+            Boolean for legend visibility (default: False)
+        mark_sc
+            Boolean to enable highlighting of Safety Car periods (default: False)
+        mark_vsc
+            Boolean to enable highlighting of Virtual Safety Car periods (default: False)
+        mark_yellow_flag
+            Boolean to enable highlighting of Yellow Flag periods (default: False)
+
+        Methods
+        -------
+        add_driver(driver: gridf1.core.Driver, excluded_laps: list = None):
+            Adds a data line for the specified driver to the chart
+        mark_laps(driver: gridf1.core.Driver, mark_sc: bool = False, mark_vsc: bool = False, mark_yellow_flag: bool = False):
+            Marks Safety Car, Virtual Safety Car and Yellow Flag periods on the chart
+    """
+
+    def __init__(self, title_session: fastf1.core.Session, driver: gridf1.core.Driver,
+                 excluded_laps: list = None, legend: bool = False, mark_sc: bool = False,  # Optional parameters
+                 mark_vsc: bool = False, mark_yellow_flag: bool = False):  # Optional parameters
         x_label = "Lap Number"
         y_label = "Lap Time"
         title = driver.name + " Lap Time Progression"
@@ -44,13 +46,30 @@ class LapTimeChart(TimeSeriesPlot):
         self.mark_laps(driver, mark_sc, mark_vsc, mark_yellow_flag)
         self.add_driver(driver, excluded_laps)
 
-    def add_driver(self, driver: gridf1.core.Driver, excluded_laps: list = None):
+    def add_driver(self, driver: gridf1.core.Driver,
+                   excluded_laps: list = None):  # Optional parameters
+        """
+        Adds a data line for the specified driver to the chart
+        :param driver: Driver object to get the data from
+        :param excluded_laps: List of laps to exclude from the chart (default: None)
+        :return:
+        """
+
         if excluded_laps is None:
             excluded_laps = []
 
         self.create_plot_line(driver.laps['LapNumber'], driver.laps['LapTime'], driver.name, driver.color, excluded_laps)
 
-    def mark_laps(self, driver: gridf1.core.Driver, mark_sc: bool = False, mark_vsc: bool = False, mark_yellow_flag: bool = False):
+    def mark_laps(self, driver: gridf1.core.Driver,
+                  mark_sc: bool = False, mark_vsc: bool = False, mark_yellow_flag: bool = False):  # Optional parameters
+        """
+        Marks Safety Car, Virtual Safety Car and Yellow Flag periods on the chart
+        :param driver: Driver object to get the data from
+        :param mark_sc: Boolean to enable highlighting of Safety Car periods (default: False)
+        :param mark_vsc: Boolean to enable highlighting of Virtual Safety Car periods (default: False)
+        :param mark_yellow_flag: Boolean to enable highlighting of Yellow Flag periods (default: False)
+        :return:
+        """
         if mark_sc:
             sc_label_added = False
             for index, lap in driver.laps.iterrows():
