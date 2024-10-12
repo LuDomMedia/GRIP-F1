@@ -1,4 +1,5 @@
 import datetime
+import os
 import fastf1 as ff1
 import fastf1.core
 import fastf1.plotting
@@ -14,6 +15,10 @@ def create_session(race: str, session: str = 'Race',
     :param cache_dir: String to specify the cache directory
     :return: fastf1.core.Session
     """
+
+    if not os.path.exists(cache_dir):
+        os.mkdir(cache_dir)
+        print(f'Created cache directory: {cache_dir}')
 
     # Enable the cache and setup matplotlib
     ff1.Cache.enable_cache(cache_dir)
