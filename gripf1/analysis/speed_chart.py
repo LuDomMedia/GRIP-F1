@@ -1,7 +1,7 @@
 import fastf1.core
 
-import gridf1.plotting.time_series_plot
-from gridf1.plotting.time_series_plot import TimeSeriesPlot
+import gripf1.core
+from gripf1.plotting.time_series_plot import TimeSeriesPlot
 
 
 class SpeedChart(TimeSeriesPlot):
@@ -24,14 +24,14 @@ class SpeedChart(TimeSeriesPlot):
 
         Methods
         -------
-        add_lap(driver: gridf1.core.Driver, lap_number: int = 0):
+        add_lap(driver: gripf1.core.Driver, lap_number: int = 0):
             Adds a lap to the chart. If lap_number is 0, the fastest lap is plotted
 
     """
 
-    def __init__(self, title_session: fastf1.core.Session, driver: gridf1.core.Driver, lap_number: int = 0,
+    def __init__(self, title_session: fastf1.core.Session, driver: gripf1.core.Driver, lap_number: int = 0,
                  legend: bool = False):  # Optional parameters
-        x_label = "Time [s]"  # TODO: Change this to be more specific
+        x_label = "Time [s]"
         y_label = "Speed [km/h]"
         title = driver.name + " Speed Analysis | Lap " + str(lap_number)
         if lap_number == 0:
@@ -39,7 +39,7 @@ class SpeedChart(TimeSeriesPlot):
         super().__init__(x_label, y_label, title, title_session, legend)
         self.add_lap(driver, lap_number)
 
-    def add_lap(self, driver: gridf1.core.Driver, lap_number: int = 0):
+    def add_lap(self, driver: gripf1.core.Driver, lap_number: int = 0):
         """
         Adds a lap to the chart. If lap_number is 0, the fastest lap is plotted (default: 0)
         :param driver: Driver object to get the data from

@@ -9,6 +9,6 @@
 # .idea workspace files
 /.idea/
 # Test cache
-/gridf1/tests/cache/
+/gripf1/tests/cache/
 # .pyc files
 *.pyc
