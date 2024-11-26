@@ -118,4 +118,5 @@ class TimeSeriesPlot:
 
         if self.legend:
             self.ax.legend()
+        plt.grid(color='gray')
         plt.show()

@@ -22,7 +22,7 @@ def create_session(race: str, session: str = 'Race',
 
     # Enable the cache and setup matplotlib
     ff1.Cache.enable_cache(cache_dir)
-    ff1.plotting.setup_mpl()
+    ff1.plotting.setup_mpl(color_scheme='fastf1', misc_mpl_mods=False)
 
     # Get the session
     if year == 'latest':
@@ -65,23 +65,23 @@ class Driver:
 
     def __init__(self, abbr: str, session: fastf1.core.Session):
         self.abbr = abbr.upper()
-        self.name = self.convert_name()
-        self.color = self.get_color()
+        self.name = self.convert_name(session)
+        self.color = self.get_color(session)
         self.laps = self.get_driver_laps(session)
 
-    def convert_name(self) -> str:
+    def convert_name(self, session) -> str:
         """
         Converts the abbreviation to the full name
         :return: str
         """
-        return ff1.plotting.DRIVER_TRANSLATE.get(self.abbr).title()
+        return ff1.plotting.get_driver_name(self.abbr, session).title()
 
-    def get_color(self) -> str:
+    def get_color(self, session) -> str:
         """
         Retrieves the color of the driver
         :return: str
         """
-        return ff1.plotting.driver_color(self.abbr)
+        return ff1.plotting.get_driver_color(self.abbr, session)
 
     def get_driver_laps(self, session) -> fastf1.core.Laps:
         """
