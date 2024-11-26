@@ -29,8 +29,9 @@ class SpeedChart(TimeSeriesPlot):
 
     """
 
-    def __init__(self, title_session: fastf1.core.Session, driver: gripf1.core.Driver, lap_number: int = 0,
-                 legend: bool = False):  # Optional parameters
+    def __init__(self, title_session: fastf1.core.Session, driver: gripf1.core.Driver,
+                 lap_number: int = 0, legend: bool = False,  # Optional parameters
+                 minor_x_ticks: float = 0, minor_y_ticks: float = 10):  # Optional parameters
         x_label = "Time [s]"
         y_label = "Speed [km/h]"
         title = driver.name + " Speed Analysis | Lap " + str(lap_number)
@@ -38,6 +39,7 @@ class SpeedChart(TimeSeriesPlot):
             title = driver.name + " Speed Analysis | Fastest Lap"
         super().__init__(x_label, y_label, title, title_session, legend)
         self.add_lap(driver, lap_number)
+        self.add_grid_lines(minor_x_ticks, minor_y_ticks)
 
     def add_lap(self, driver: gripf1.core.Driver, lap_number: int = 0):
         """

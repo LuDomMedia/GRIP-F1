@@ -38,13 +38,15 @@ class LapTimeChart(TimeSeriesPlot):
 
     def __init__(self, title_session: fastf1.core.Session, driver: gripf1.core.Driver,
                  excluded_laps: list = None, legend: bool = False, mark_sc: bool = False,  # Optional parameters
-                 mark_vsc: bool = False, mark_yellow_flag: bool = False):  # Optional parameters
+                 mark_vsc: bool = False, mark_yellow_flag: bool = False,  # Optional parameters
+                 minor_x_ticks: bool = 2, minor_y_ticks: bool = 0):  # Optional parameters
         x_label = "Lap Number"
         y_label = "Lap Time [min:sec.ms]"
         title = driver.name + " Lap Time Progression"
         super().__init__(x_label, y_label, title, title_session, legend)
         self.mark_laps(driver, mark_sc, mark_vsc, mark_yellow_flag)
         self.add_driver(driver, excluded_laps)
+        self.add_grid_lines(minor_x_ticks, minor_y_ticks)
 
     def add_driver(self, driver: gripf1.core.Driver,
                    excluded_laps: list = None):  # Optional parameters

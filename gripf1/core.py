@@ -89,4 +89,4 @@ class Driver:
         :param session: Session object to get the data from
         :return: fastf1.core.Laps
         """
-        return session.laps.pick_driver(self.abbr)
+        return session.laps.pick_drivers(self.abbr)

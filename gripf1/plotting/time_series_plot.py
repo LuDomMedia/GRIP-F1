@@ -2,6 +2,7 @@ import fastf1.core
 import pandas
 import numpy as np
 from matplotlib import pyplot as plt
+from matplotlib.ticker import MultipleLocator
 
 
 class TimeSeriesPlot:
@@ -110,6 +111,25 @@ class TimeSeriesPlot:
         else:
             self.ax.axvline(x=lap, color=color, alpha=alpha, linewidth=linewidth, label=label, zorder=2)
 
+    def add_grid_lines(self,
+                       minor_x_ticks: float = 0, minor_y_ticks: float = 0):  # Optional parameters
+        """
+        Adds grid lines to the plot
+        :return:
+        """
+
+        # Set x-axis ticks  every 2 laps
+        if minor_x_ticks > 0:
+            self.ax.xaxis.set_minor_locator(MultipleLocator(minor_x_ticks))
+
+        # Set y-axis ticks every 0.5 seconds
+        if minor_y_ticks > 0:
+            self.ax.yaxis.set_minor_locator(MultipleLocator(minor_y_ticks))
+
+        # Display grid lines
+        plt.grid(which='minor', alpha=0.2)
+        plt.grid(which='major', alpha=0.5)
+
     def plot(self):
         """
         Displays the plot
@@ -118,5 +138,5 @@ class TimeSeriesPlot:
 
         if self.legend:
             self.ax.legend()
-        plt.grid(color='gray')
+
         plt.show()
