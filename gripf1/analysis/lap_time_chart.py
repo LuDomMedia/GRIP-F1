@@ -91,9 +91,9 @@ class LapTimeChart(TimeSeriesPlot):
                     else:
                         self.mark_x_axis(lap['LapNumber'], "#A600A6", "")
         if mark_yellow_flag:
+            yellow_flag_label_added = False
             for index, lap in driver.laps.iterrows():
                 if '2' in str(lap['TrackStatus']):
-                    yellow_flag_label_added = False
                     if not yellow_flag_label_added:
                         self.mark_x_axis(lap['LapNumber'], "#FFFF00", "Yellow Flag")
 
