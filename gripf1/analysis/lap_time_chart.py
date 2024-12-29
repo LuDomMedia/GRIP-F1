@@ -96,8 +96,6 @@ class LapTimeChart(TimeSeriesPlot):
                 if '2' in str(lap['TrackStatus']):
                     if not yellow_flag_label_added:
                         self.mark_x_axis(lap['LapNumber'], "#FFFF00", "Yellow Flag")
-
-                        # Is set to True after the first yellow flag is marked. This is to avoid multiple labels
                         yellow_flag_label_added = True
                     else:
                         self.mark_x_axis(lap['LapNumber'], "#FFFF00", "")
