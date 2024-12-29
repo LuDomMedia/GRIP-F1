@@ -73,7 +73,7 @@ class Driver:
 
     def convert_name(self, session) -> str:
         """
-        Converts the abbreviation to the full name
+        Returns the full driver name from the abbreviation
         :return: str
         """
         return ff1.plotting.get_driver_name(self.abbr, session).title()
