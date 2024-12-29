@@ -27,6 +27,8 @@ def create_session(race: str, session: str = 'Race',
     # Get the session
     if year == 'latest':
         year = datetime.datetime.now().year
+    else:
+        year = int(year)
     session = ff1.get_session(year, race, session)
     session.load()
 
