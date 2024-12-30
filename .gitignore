@@ -10,5 +10,7 @@
 /.idea/
 # Test cache
 /gripf1/tests/cache/
+/gripf1/tests/private/*
+!gripf1/tests/private/.gitkeep
 # .pyc files
 *.pyc
