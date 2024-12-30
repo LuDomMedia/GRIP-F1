@@ -29,9 +29,8 @@ pip install fastf1
 
 There are some examples of how GRIP-F1 can be used in the `tests` folder. Detailed instructions will follow in the future.
 
-It is highly recommended that you work within this `tests` folder. It is also possible to create a new folder in the root directory.
-
 > [!IMPORTANT]
+> - It is highly recommended that you work within this `tests/private` folder if you've cloned the repository as this folder is excluded from GitHub and therefore nothing will be overwritten by future updates.
 > - It is important to open the folder containing all files from GRIP-F1 as a project in your IDE to avoid problems with importing and referencing GRIP-F1.
 > - Due to limitations of the APIs, some analyses can only be performed from 2018 onwards.
 
