@@ -1,4 +1,10 @@
-# **GRIP-F1**
+# **GRIP-F1** 
+[![Maintained yes Badge](https://img.shields.io/badge/Maintained%3F-yes-green?style=for-the-badge)](#)
+[![Repository License Badge](https://img.shields.io/github/license/LuDomMedia/GRIP-F1?style=for-the-badge)](#)
+[![Repository Release Badge](https://img.shields.io/github/release/LuDomMedia/GRIP-F1?style=for-the-badge)](https://github.com/LuDomMedia/GRIP-F1/releases/latest)
+[![Python Badge](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white)](#)
+[![pypi Badge](https://img.shields.io/badge/pypi-coming_soon-purple?style=for-the-badge)](#)
+<hr />
 The Graphical Racing Insights Package - Formula 1 (GRIP-F1 for short) is a python package for analyzing and visualizing Formula 1 timing & telemetry data and results.
 
 GRIP-F1 relies heavily on other packages and projects to achieve its functionality. A complete list can be found under [Dependencies](#dependencies).
