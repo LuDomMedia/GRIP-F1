@@ -4,7 +4,7 @@ title: '[BUG] <Please add a descriptive title here>'
 labels:
   - bug
 body:
-  - type: markdownENG
+  - type: markdown
     attributes:
       value: >
         Thank you for reporting your issue! Before you start filling the form,
