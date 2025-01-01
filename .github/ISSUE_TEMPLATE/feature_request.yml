@@ -1,0 +1,12 @@
+name: ⭐ Feature request
+description: Make suggestions for new features or improvements.
+title: '[ENH] <Please add a descriptive title here>'
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: 'Description of feature or improvement:'
+    validations:
+      required: true

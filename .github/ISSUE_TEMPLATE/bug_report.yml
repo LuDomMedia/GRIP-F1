@@ -1,0 +1,42 @@
+name: 🕷️ Bug report
+description: Report an error or unexpected behavior
+title: '[BUG] <Please add a descriptive title here>'
+labels:
+  - bug
+body:
+  - type: markdownENG
+    attributes:
+      value: >
+        Thank you for reporting your issue! Before you start filling the form,
+        please follow these steps:
+
+        * Consider if the problem really is a bug. If not, you can open a [Discussion](https://github.com/LuDomMedia/GRIP-F1/discussions/new/choose).
+        * Make sure that you are using the latest version of GRIP-F1.
+        * See if your problem has already been reported in the `issues` section.
+  - type: input
+    id: python_version
+    attributes:
+      label: Python Version
+      description: 'You can check your Python version with: python -V'
+      placeholder: '3.11'
+  - type: textarea
+    id: description
+    attributes:
+      label: 'Describe the issue:'
+    validations:
+      required: true
+  - type: textarea
+    id: code_to_reproduce
+    attributes:
+      label: 'Code example to reproduce:'
+      description: >-
+        Please provide a short code example which reproduces the issue. This should be a complete script that can be run on its own.
+      placeholder: << paste your code here >>
+      render: python
+  - type: textarea
+    id: error_message
+    attributes:
+      label: 'Error message:'
+      description: >-
+        If there is an error message associated with your issue, please paste it here.
+      placeholder: << paste error message here >>
