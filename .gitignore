@@ -9,6 +9,8 @@
 # .idea workspace files
 /.idea/
 # Test cache
-/gridf1/tests/cache/
+/gripf1/tests/cache/
+/gripf1/tests/private/*
+!gripf1/tests/private/.gitkeep
 # .pyc files
 *.pyc
