@@ -131,11 +131,11 @@ class TimeSeriesPlot:
         :return:
         """
 
-        # Set x-axis ticks  every 2 laps
+        # Set x-axis ticks in defined distance
         if minor_x_ticks > 0:
             self.ax.xaxis.set_minor_locator(MultipleLocator(minor_x_ticks))
 
-        # Set y-axis ticks every 0.5 seconds
+        # Set y-axis ticks in defined distance
         if minor_y_ticks > 0:
             self.ax.yaxis.set_minor_locator(MultipleLocator(minor_y_ticks))
 
