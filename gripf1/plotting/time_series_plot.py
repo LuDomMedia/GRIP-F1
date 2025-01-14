@@ -35,6 +35,8 @@ class TimeSeriesPlot:
         Creates a data line on the plot
     mark_x_axis(lap: int, color: str, label: str, alpha: float = 0.3, linewidth: int = 6):
         Marks a vertical line (area) on the plot
+    set_limit(axis: str, lower_limit: float | pandas.Timedelta = None, upper_limit: float | pandas.Timedelta = None):
+        Sets the limits of a single axis
     plot():
         Displays the plot
     save_to_file(file_name: str, directory: str = 'output', file_type: str = 'png', transparency: bool = False, dpi: float = 100):
@@ -132,6 +134,23 @@ class TimeSeriesPlot:
         # Display grid lines
         plt.grid(which='minor', alpha=0.2)
         plt.grid(which='major', alpha=0.5)
+
+    def set_limit(self, axis: str,
+                  lower_limit: float | pandas.Timedelta = None, upper_limit: float | pandas.Timedelta = None): # Optional parameters
+        """
+        Sets the limits of a single axis
+        :param axis: Axis to set the limits for
+        :param lower_limit: Lower limit of the axis (default: None)
+        :param upper_limit: Upper limit of the axis (default: None)
+        :return:
+        """
+
+        if axis == 'x':
+            self.ax.set_xlim([lower_limit, upper_limit])
+        elif axis == 'y':
+            self.ax.set_ylim([lower_limit, upper_limit])
+        else:
+            raise ValueError("Invalid axis. Use 'x' or 'y'.")
 
     def plot(self):
         """
