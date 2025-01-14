@@ -37,6 +37,8 @@ class TimeSeriesPlot:
         Marks a vertical line (area) on the plot
     set_limit(axis: str, lower_limit: float | pandas.Timedelta = None, upper_limit: float | pandas.Timedelta = None):
         Sets the limits of a single axis
+    set_limits(lower_limit_x: float | pandas.Timedelta = None, upper_limit_x: float | pandas.Timedelta = None, lower_limit_y: float | pandas.Timedelta = None, upper_limit_y: float | pandas.Timedelta = None):
+        Sets the limits of the x and y axes
     plot():
         Displays the plot
     save_to_file(file_name: str, directory: str = 'output', file_type: str = 'png', transparency: bool = False, dpi: float = 100):
