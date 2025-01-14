@@ -35,6 +35,8 @@ class TimeSeriesPlot:
         Creates a data line on the plot
     mark_x_axis(lap: int, color: str, label: str, alpha: float = 0.3, linewidth: int = 6):
         Marks a vertical line (area) on the plot
+    add_grid_lines(minor_x_ticks: float = 0, minor_y_ticks: float = 0):
+        Adds grid lines to the plot
     set_limit(axis: str, lower_limit: float | pandas.Timedelta = None, upper_limit: float | pandas.Timedelta = None):
         Sets the limits of a single axis
     set_limits(lower_limit_x: float | pandas.Timedelta = None, upper_limit_x: float | pandas.Timedelta = None, lower_limit_y: float | pandas.Timedelta = None, upper_limit_y: float | pandas.Timedelta = None):
@@ -124,6 +126,8 @@ class TimeSeriesPlot:
                        minor_x_ticks: float = 0, minor_y_ticks: float = 0):  # Optional parameters
         """
         Adds grid lines to the plot
+        :param minor_x_ticks: Distance between the minor x-axis ticks (default: 0)
+        :param minor_y_ticks: Distance between the minor y-axis ticks (default: 0)
         :return:
         """
 
