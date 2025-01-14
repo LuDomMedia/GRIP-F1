@@ -39,6 +39,8 @@ class TimeSeriesPlot:
         Sets the limits of a single axis
     set_limits(lower_limit_x: float | pandas.Timedelta = None, upper_limit_x: float | pandas.Timedelta = None, lower_limit_y: float | pandas.Timedelta = None, upper_limit_y: float | pandas.Timedelta = None):
         Sets the limits of the x and y axes
+    set_plot_size(width: float = None, height: float = None):
+        Sets the size of the plot
     plot():
         Displays the plot
     save_to_file(file_name: str, directory: str = 'output', file_type: str = 'png', transparency: bool = False, dpi: float = 100):
@@ -167,6 +169,20 @@ class TimeSeriesPlot:
 
         self.set_limit('x', lower_limit_x, upper_limit_x)
         self.set_limit('y', lower_limit_y, upper_limit_y)
+
+    def set_plot_size(self, width: float = None, height: float = None):
+        """
+        Sets the size of the plot
+        :param width: Width of the plot (default: None)
+        :param height: Height of the plot (default: None)
+        :return:
+        """
+
+        if width is not None:
+            self.fig.set_figwidth(width)
+
+        if height is not None:
+            self.fig.set_figheight(height)
 
     def plot(self):
         """
