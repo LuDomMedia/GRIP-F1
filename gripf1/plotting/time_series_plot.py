@@ -152,6 +152,20 @@ class TimeSeriesPlot:
         else:
             raise ValueError("Invalid axis. Use 'x' or 'y'.")
 
+    def set_limits(self, lower_limit_x: float | pandas.Timedelta = None, upper_limit_x: float | pandas.Timedelta = None, # Optional parameters
+                   lower_limit_y: float | pandas.Timedelta = None, upper_limit_y: float | pandas.Timedelta = None): # Optional parameters
+        """
+        Sets the limits of the x and y axes
+        :param lower_limit_x: Lower limit of the x-axis (default: None)
+        :param upper_limit_x: Upper limit of the x-axis (default: None)
+        :param lower_limit_y: Lower limit of the y-axis (default: None)
+        :param upper_limit_y: Upper limit of the y-axis (default: None)
+        :return:
+        """
+
+        self.set_limit('x', lower_limit_x, upper_limit_x)
+        self.set_limit('y', lower_limit_y, upper_limit_y)
+
     def plot(self):
         """
         Displays the plot
