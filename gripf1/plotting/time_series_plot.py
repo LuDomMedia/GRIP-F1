@@ -1,6 +1,7 @@
 import fastf1.core
 import pandas
 import numpy as np
+import os
 from matplotlib import pyplot as plt
 from matplotlib.ticker import MultipleLocator
 
@@ -36,6 +37,8 @@ class TimeSeriesPlot:
         Marks a vertical line (area) on the plot
     plot():
         Displays the plot
+    save_to_file(file_name: str, directory: str = 'output', file_type: str = 'png', transparency: bool = False, dpi: float = 100):
+        Saves the plot to a file
 
     """
 
@@ -140,3 +143,25 @@ class TimeSeriesPlot:
             self.ax.legend()
 
         plt.show()
+
+    def save_to_file(self, file_name: str,
+                     directory: str = 'output', file_type: str = 'png', transparency: bool = False, dpi: float = 100):  # Optional parameters
+        """
+        Saves the plot to a file
+        :param file_name: Name of the file
+        :param directory: Directory to save the file (default: 'output')
+        :param file_type: File type of the file (default: 'png')
+        :param transparency: Transparency of the file (default: False)
+        :param dpi: Resolution of the file in Dots per Inch (default: 100)
+        :return:
+        """
+        file_path = f'{directory}/{file_name}.{file_type}'
+
+        if not os.path.exists(directory):
+            os.mkdir(directory)
+            print(f'Created new output folder: {directory}')
+
+        if self.legend:
+            self.ax.legend()
+
+        plt.savefig(file_path, transparent=transparency, dpi=dpi)
