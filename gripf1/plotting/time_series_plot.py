@@ -195,7 +195,9 @@ class TimeSeriesPlot:
         """
 
         if self.legend:
-            self.ax.legend()
+            legend = self.ax.legend()
+            for line in legend.get_lines():
+                line.set_linewidth(7)
 
         plt.show()
 
@@ -217,6 +219,8 @@ class TimeSeriesPlot:
             print(f'Created new output folder: {directory}')
 
         if self.legend:
-            self.ax.legend()
+            legend = self.ax.legend()
+            for line in legend.get_lines():
+                line.set_linewidth(7)
 
         plt.savefig(file_path, transparent=transparency, dpi=dpi)
