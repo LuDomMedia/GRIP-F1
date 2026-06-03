@@ -1,5 +1,5 @@
 # **GRIP-F1** 
-[![Maintained yes Badge](https://img.shields.io/badge/Maintained%3F-yes-green?style=for-the-badge)](#)
+[![Maintained yes Badge](https://img.shields.io/badge/Maintained%3F-partially-orange?style=for-the-badge)](#)
 [![Repository License Badge](https://img.shields.io/github/license/LuDomMedia/GRIP-F1?style=for-the-badge)](#)
 [![Repository Release Badge](https://img.shields.io/github/release/LuDomMedia/GRIP-F1?style=for-the-badge)](https://github.com/LuDomMedia/GRIP-F1/releases/latest)
 [![Python Badge](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white)](#)
